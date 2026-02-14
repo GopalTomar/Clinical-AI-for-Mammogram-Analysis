@@ -45,6 +45,7 @@ import seaborn as sns
 from deep_translator import GoogleTranslator
 import hashlib
 import requests
+import pytz
 
 # ==================== CONFIGURATION ====================
 
@@ -455,6 +456,12 @@ def preprocess_image(image, target_size=(128, 128)):
     except Exception as e:
         return None, str(e)
 
+def get_ist_time():
+    """Returns current time in Indian Standard Time"""
+    ist = pytz.timezone('Asia/Kolkata')
+    return datetime.now(ist).strftime("%Y-%m-%d %H:%M:%S")
+
+
 def predict_image(model, processed_image):
     """Make prediction with error handling"""
     try:
@@ -467,10 +474,13 @@ def predict_image(model, processed_image):
             'phase': phase,
             'confidence': confidence,
             'probabilities': predictions[0],
-            'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            # CHANGE THIS LINE BELOW:
+            'timestamp': get_ist_time() 
         }, None
     except Exception as e:
         return None, str(e)
+
+
 
 # ==================== VISUALIZATION FUNCTIONS ====================
 
@@ -655,7 +665,7 @@ def generate_pdf_report(analysis, image_bytes, lang_code="en"):
     
     # Metadata
     metadata = [
-        ["Generated", datetime.now().strftime("%Y-%m-%d %H:%M:%S")],
+        ["Generated", get_ist_time()], # <--- Change this line
         ["Analysis Date", analysis['timestamp']],
     ]
     
