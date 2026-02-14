@@ -1,25 +1,14 @@
-# Core Dependencies
 streamlit
-tensorflow
-opencv-python
+tensorflow-cpu
+opencv-python-headless
 numpy
 pandas
 pillow
-
-# Visualization
 plotly
 matplotlib
 seaborn
-
-# PDF Generation
 reportlab
-
-# Translation
 deep-translator
-
-# HTTP Requests
 requests
-
-# Optional but recommended
 scipy
 scikit-learn
