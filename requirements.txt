@@ -12,3 +12,4 @@ deep-translator
 requests
 scipy
 scikit-learn
+pytz
