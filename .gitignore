@@ -1,0 +1,12 @@
+# Ignore the virtual environment (This is the most important one)
+venv/
+
+# Ignore the image dataset folder
+Breast_cancer/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore VS Code settings (optional)
+.vscode/
